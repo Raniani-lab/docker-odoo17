@@ -124,8 +124,8 @@ server {
 
 # Odoo 17 screenshots
 
-<img src="screenshots/2022-10-17_22h16_21.png" width="50%">
+<img src="screenshots/1.png" width="50%">
 
-<img src="screenshots/2022-10-17_22h16_30.png" width="100%">
+<img src="screenshots/1.png" width="100%">
 
 <
