@@ -1,6 +1,7 @@
+https://topbuziness.com
 # Quick install
 
-Installing Odoo 16 with one command.
+Installing Odoo 17 with one command.
 
 (Supports multiple Odoo instances on one server)
 
