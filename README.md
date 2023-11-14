@@ -22,8 +22,8 @@ to set up another Odoo instance @ `localhost:11017` (default master password: `t
 
 Some arguments:
 * First argument (**odoo-one**): Odoo deploy folder
-* Second argument (**10016**): Odoo port
-* Third argument (**20016**): live chat port
+* Second argument (**10017**): Odoo port
+* Third argument (**20017**): live chat port
 
 If `curl` is not found, install it:
 
@@ -77,7 +77,7 @@ The **addons/** folder contains custom addons. Just put your custom addons if yo
 
 * To change Odoo configuration, edit file: **etc/odoo.conf**.
 * Log file: **etc/odoo-server.log**
-* Default database password (**admin_passwd**) is `mostafa@1234`, please change it @ [etc/odoo.conf#L60](/etc/odoo.conf#L60)
+* Default database password (**admin_passwd**) is `topbusiness@1234`, please change it @ [etc/odoo.conf#L60](/etc/odoo.conf#L60)
 
 # Odoo container management
 
@@ -101,7 +101,7 @@ docker-compose down
 
 # Live chat
 
-In [docker-compose.yml#L21](docker-compose.yml#L21), we exposed port **20015** for live-chat on host.
+In [docker-compose.yml#L21](docker-compose.yml#L21), we exposed port **20017** for live-chat on host.
 
 Configuring **nginx** to activate live chat feature (in production):
 
