@@ -120,11 +120,11 @@ server {
 # docker-compose.yml
 
 * odoo:17.0
-* postgres:17
+* postgres:16
 
 # Odoo 17 screenshots
 
-<img src="screenshots/1.png" width="50%">
+<img src="screenshots/2.png" width="100%">
 
 <img src="screenshots/1.png" width="100%">
 
