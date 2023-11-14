@@ -7,18 +7,18 @@ Installing Odoo 16 with one command.
 Install [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) yourself, then run:
 
 ``` bash
-curl -s https://raw.githubusercontent.com/topbusinessio/docker-odoo17/master/run.sh | sudo bash -s odoo-one 10016 20016
+curl -s https://raw.githubusercontent.com/topbusinessio/docker-odoo17/master/run.sh | sudo bash -s odoo-one 10017 20017
 ```
 
-to set up first Odoo instance @ `localhost:10015` (default master password: `mostafa@1234`)
+to set up first Odoo instance @ `localhost:10017` (default master password: `topbusiness@1234`)
 
 and
 
 ``` bash
-curl -s https://raw.githubusercontent.com/topbusinessio/docker-odoo17/master/run.sh | sudo bash -s odoo-two 11016 21016
+curl -s https://raw.githubusercontent.com/topbusinessio/docker-odoo17/master/run.sh | sudo bash -s odoo-two 11017 21017
 ```
 
-to set up another Odoo instance @ `localhost:11015` (default master password: `mostafa@1234`)
+to set up another Odoo instance @ `localhost:11017` (default master password: `topbusiness@1234`)
 
 Some arguments:
 * First argument (**odoo-one**): Odoo deploy folder
