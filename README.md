@@ -1,4 +1,4 @@
-https://topbuziness.com
+# https://topbuziness.com
 # Quick install
 
 Installing Odoo 17 with one command.
