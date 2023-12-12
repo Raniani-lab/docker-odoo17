@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="zero_journal_entries_print">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>
+                            <span>Journal Entry</span>
+                            <span t-if="o.name != '/'" t-field="o.name"/>
+                        </h2>
+
+                        <div id="informations" class="row mt32 mb32">
+                            <div class="col-auto mw-100 mb-2" t-if="o.journal_id" name="journal_id">
+                                <strong>Journal:</strong>
+                                <p class="m-0" t-field="o.journal_id.name"/>
+                            </div>
+                            <div style=";color:#4A1031" class="col-auto mw-100 mb-2;o_bold "  name="status">
+                                <strong>Status:</strong>
+                                <p class="m-0" t-field="o.state"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.date" name="date">
+                                <strong>Date:</strong>
+                                <p class="m-0" t-field="o.date"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.partner_id" name="partner_id">
+                                <strong>Partner:</strong>
+                                <p class="m-0" t-field="o.partner_id.name"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.ref" name="reference">
+                                <strong>Reference:</strong>
+                                <p class="m-0" t-field="o.ref"/>
+                            </div>
+                        </div>
+                        <style>
+                            .tblbordr {
+                                text-align: center;
+                                border: 1px solid black;
+                            }
+                        </style>
+                            <div class="row">
+                              <div class="col-3">
+                                <span style=";color:#4A1031" class="o_bold">
+                                  <strong>Total:</strong>
+                                </span>
+                                <span t-field="o.amount_total_signed" style=";color:#4A1031" class="o_bold"/>
+                              </div>
+                              <div class="col-3"/>
+                              <div class="col-3"/>
+                              <div class="col-3"/>
+                            </div>
+                            <table width="100%" class="table table-border">
+                                <thead>
+                                    <tr style="font-size:15px; background-color:#99968e">
+                                            <th class="text-center">Account</th>
+                                            <th class="text-center">Partner</th>
+                                            <th class="text-center">Label</th>
+                                            <th class="text-center">Analytic</th>
+                                            <th class="text-center">Taxes</th>
+                                            <th class="text-center">Debit</th>
+                                            <th class="text-center">Credit</th>
+                                    </tr>
+                                </thead>
+                                <tbody style=";color:#4A1031" class="consumed_tbody">
+                                    <t t-foreach="o.line_ids" t-as="line">
+                                        <tr>
+                                            <td><span style=";color:#630000" t-field="line.account_id.name"/></td>
+                                            <td><span style=";color:#630000" t-field="line.partner_id.name"/></td>
+                                            <td><span style=";color:#630000" t-field="line.name"/></td>
+                                            <td>
+                                                <span style=";color:#630000">
+                                                    <div t-foreach="line.analytic_distribution" t-as="distribution">
+                                                          <t t-esc="line.env['account.analytic.account'].browse(int(distribution))[0].name"/>: <t t-esc="line.analytic_distribution.get(distribution)"/>
+                                                    </div>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span style=";color:#630000" t-field="line.tax_ids" />
+                                            </td>
+                                            <td ><span style=";color:#630000" t-field="line.debit"/></td>
+                                            <td ><span style=";color:#630000" t-field="line.credit"/></td>
+                                        </tr>
+                                    
+                                    </t>
+                                </tbody>
+                            </table>
+                            <div style=";color:#4A1031" class="row">
+                                <div class="col-4">
+                                    <center>-------------------------------------------</center>
+                                    <center>Created By: <span t-field="o.create_uid.name"/></center>
+                                </div>
+                                <div class="col-4">
+                                    <center>-------------------------------------------</center>
+                                    <center>Checked By</center>
+                                </div>
+                                <div class="col-4">
+                                    <center>-------------------------------------------</center>
+                                    <center>Approved By</center>
+                                </div>
+                            </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+        <template id="zero_journal_entries_print_action">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="zero_journal_entries_print.zero_journal_entries_print" />
+                </t>
+            </t>
+        </template>
+        <record id="zero_journal_entries_pdf_print" model="ir.actions.report">
+            <field name="name">Print Journal Entry</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">zero_journal_entries_print.zero_journal_entries_print_action</field>
+            <field name="report_file">zero_journal_entries_print.zero_journal_entries_print_action</field>
+            <field name="print_report_name">(object._get_report_je_filename())</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+        </record>
+</odoo>
