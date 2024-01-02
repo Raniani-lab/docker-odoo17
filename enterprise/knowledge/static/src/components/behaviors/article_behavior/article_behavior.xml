@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<templates>
-    <!-- /article template -->
-    <t t-name="knowledge.ArticleBehavior">
-        <t t-out="props.display_name"/>
-    </t>
-</templates>
